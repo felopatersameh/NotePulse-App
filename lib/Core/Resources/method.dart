@@ -1,0 +1,1 @@
+import 'dart:math';class AppMethod {  String generateRandomColor() {    final random = Random();    List<String> colorOptions = [      '0xFF7F8C8D',      '0xFF2980B9',      '0xFF8E44AD',      '0xFFF1C40F',      '0xFF27AE60',      '0xFFC0392B'    ];    return colorOptions[random.nextInt(colorOptions.length)];  }}
