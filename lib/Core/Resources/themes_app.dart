@@ -4,43 +4,47 @@ import 'package:note_pulse/Core/Resources/styles.dart';
 import 'colors.dart';
 
 ThemeData themeLight(context) => ThemeData(
-      scaffoldBackgroundColor: AppColors.colorBackground,
-      appBarTheme: AppBarTheme(
-        titleTextStyle: getTextLabelLarge(AppColors.colorTitleText1),
-        toolbarHeight: 50,
-        backgroundColor: AppColors.colorBackground,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: AppColors.colorIcons2),
-      ),
+    scaffoldBackgroundColor: AppColors.colorBackground,
+    appBarTheme: AppBarTheme(
+      titleTextStyle: getTextAppBar(AppColors.colorTitleTextWhite),
+      toolbarHeight: 50,
+      backgroundColor: AppColors.colorBackgroundAppBar,
+      elevation: 0,
+      iconTheme: const IconThemeData(color: AppColors.colorIcons),
+    ),
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: AppColors.colorBackgroundDrawer,
+    ),
     bottomSheetTheme: const BottomSheetThemeData(
-      backgroundColor: AppColors.colorBackground,
+      showDragHandle: true
+      ,
+      backgroundColor: AppColors.colorBackgroundSheet,
       elevation: 50,
     ),
     textTheme: TextTheme(
-        bodyLarge: getTextLarge(AppColors.colorTitleText1),
+        bodyLarge: getTextLarge(AppColors.colorTitleTextWhite),
         bodyMedium: getTextMedium(AppColors.colorTitleText2),
-        bodySmall: getTextSmall(AppColors.colorTitleText3))
-
-    );
+        bodySmall: getTextSmall(AppColors.colorTitleText3)));
 
 ThemeData themeDark(context) => ThemeData(
     scaffoldBackgroundColor: AppColorsDark.colorBackground,
-    appBarTheme: const AppBarTheme(
-      titleTextStyle:
-          TextStyle(color: AppColorsDark.colorTitleText1, fontSize: 25),
+    appBarTheme: AppBarTheme(
+      titleTextStyle: getTextAppBar(AppColorsDark.colorTitleTextWhite),
       toolbarHeight: 50,
-      backgroundColor: AppColorsDark.colorBackground,
+      backgroundColor: AppColorsDark.colorBackgroundAppBar,
       elevation: 0,
-      iconTheme: IconThemeData(color: AppColorsDark.colorIcons),
+      iconTheme: const IconThemeData(color: AppColorsDark.colorIcons),
     ),
     drawerTheme: const DrawerThemeData(
-      backgroundColor: AppColorsDark.colorBackground2,
+      backgroundColor: AppColorsDark.colorBackgroundSheet,
     ),
     bottomSheetTheme: const BottomSheetThemeData(
-      backgroundColor: AppColorsDark.colorBackground,
+      showDragHandle: true,
+      backgroundColor: AppColorsDark.colorBackgroundSheet,
       elevation: 50,
     ),
     textTheme: TextTheme(
-        bodyLarge: getTextLarge(AppColorsDark.colorTitleText1),
+        labelLarge: getTextLabelLarge(AppColorsDark.colorTitleTextWhite),
+        bodyLarge: getTextLarge(AppColorsDark.colorTitleTextWhite),
         bodyMedium: getTextMedium(AppColorsDark.colorTitleText2),
         bodySmall: getTextSmall(AppColorsDark.colorTitleText3)));

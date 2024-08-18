@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'states.dart';
-import 'package:sqflite/sqflite.dart';
-import '../../../../Core/Resources/icon.dart';
-import 'package:note_pulse/Core/Resources/string.dart';
-import '../../data/models/notes_model.dart';
-import 'package:note_pulse/Core/SqlLite/database_process.dart';
+import 'package:note_pulse/Core/Network/Local/cash_helper.dart';
+import 'package:note_pulse/Core/Network/Local/local_string.dart';
 
-import '../../../../Core/SqlLite/strings_sql.dart';
+import '../../../../Core/Resources/icon.dart';
+import '../../data/models/notes_model.dart';
+import 'states.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(InitialStates());
 
   static AppCubit get(context) => BlocProvider.of(context);
+
   // final DatabaseHelper dbHelper = DatabaseHelper();
   // Database? database; // for Create Database
   List<NotesModel> dataNotes = [];
@@ -30,6 +29,12 @@ class AppCubit extends Cubit<AppState> {
     sheet = show;
     iconFloating = iconData;
     emit(ChangeBottomSheet());
+  }
+
+  Future<void> changeThemes(bool value) async {
+    dark = value;
+    await CashHelper.saveData(key: LocalString.modeDark, value: value);
+    emit(ChangeThemes());
   }
 
 //------------------------------------------------------------------------------------------------------------------------
@@ -113,7 +118,7 @@ class AppCubit extends Cubit<AppState> {
     // if (databaseDateTime.isBefore(now)) {
     //   return true; // The date and time have passed
     // } else {
-      return false; // The date and time have not passed
+    return false; // The date and time have not passed
     // }
   }
 
@@ -133,6 +138,7 @@ class AppCubit extends Cubit<AppState> {
     //   emit(ErrorRemovingRaw(error: onError));
     // });
   }
+
   // void _removeItem(int index) {
   //   if (index >= 0 && index < myList.length) {
   //     myList.removeAt(index);
@@ -173,12 +179,6 @@ class AppCubit extends Cubit<AppState> {
   }
 
 //------------------------------------------------------------------------------------------------------------------------
-  //^ Need updated
-  void changeThemes(value) {
-    dark = value;
-    //todo CashHelper
-    emit(ChangeThemes());
-  }
 
 //------------------------------------------------------------------------------------------------------------------------
 } //! end

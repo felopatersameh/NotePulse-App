@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SizeFontManger {
   static const double s13_5 = 13.5;
   static const double s24 = 24.0;
@@ -36,38 +35,17 @@ TextStyle _getTextStyle(
       overflow: TextOverflow.ellipsis);
 }
 
-// for title text
-TextStyle getBigTitleSplash(color) => _getTextStyle(
-    SizeFontManger.s52, WeightFontManger.wB, color, FamilyFontManger.familyApp);
-
-//---------------------------------
-TextStyle getTextMedium(color) => _getTextStyle(
-    SizeFontManger.s20,
-    WeightFontManger.w400,
-    color,
-    FamilyFontManger.familyAll);
+TextStyle getTextMedium(color) => _getTextStyle(SizeFontManger.s18,
+    WeightFontManger.w400, color, FamilyFontManger.familyAll);
 //---------------------------------
 TextStyle getTextSmall(color) => _getTextStyle(
-    SizeFontManger.s16,
-    WeightFontManger.wB,
-    color,
-    FamilyFontManger.familyAll);
+    SizeFontManger.s14, WeightFontManger.wB, color, FamilyFontManger.familyAll);
 //---------------------------------
 TextStyle getTextLarge(color) => _getTextStyle(
-    SizeFontManger.s24,
-    WeightFontManger.wB,
-    color,
-    FamilyFontManger.familyAll);
-//-------------------------------
-TextStyle getTextLabelLarge(color) => _getTextStyle(
-    SizeFontManger.s30,
-    WeightFontManger.wB,
-    color,
-    FamilyFontManger.familyAll);
+    SizeFontManger.s20, WeightFontManger.wB, color, FamilyFontManger.familyAll);
 //---------------------------------
-
-
-
-
-
-
+TextStyle getTextLabelLarge(color) => _getTextStyle(SizeFontManger.s20,
+    WeightFontManger.w400, color, FamilyFontManger.familyAll);
+//-------------------------------
+TextStyle getTextAppBar(color) => _getTextStyle(
+    SizeFontManger.s24, WeightFontManger.wB, color, FamilyFontManger.familyAll);

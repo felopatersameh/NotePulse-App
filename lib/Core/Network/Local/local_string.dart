@@ -1,0 +1,1 @@
+class LocalString {  static const String modeDark = 'Dark';}

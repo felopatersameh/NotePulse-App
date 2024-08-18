@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_pulse/Core/Network/Local/local_string.dart';
 
+import 'Core/Network/Local/cash_helper.dart';
 import 'Core/Resources/themes_app.dart';
 import 'Core/bloc_observer.dart';
 import 'Features/Main/presentation/manager/cubit.dart';
@@ -19,19 +21,27 @@ import 'Features/Main/presentation/pages/screen_of_start.dart';
 // ^ Maybe
 // Pending add some item in appbar as [logo,name,....]
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+   await CashHelper.init();
   Bloc.observer = MyBlocObserver();
-  runApp(const Myapp());
+  final bool model = CashHelper.getData(key: LocalString.modeDark);
+  runApp(Myapp(
+    model: model,
+  ));
 }
 
 class Myapp extends StatelessWidget {
-  const Myapp({super.key});
+  final bool model;
+
+  const Myapp({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => AppCubit())],
+        providers: [
+          BlocProvider(create: (context) => AppCubit()..changeThemes(model))
+        ],
         child: BlocBuilder<AppCubit, AppState>(
           builder: (context, state) {
             return MaterialApp(
