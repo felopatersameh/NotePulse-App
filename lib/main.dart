@@ -8,7 +8,7 @@ import 'Core/Resources/themes_app.dart';
 import 'Core/bloc_observer.dart';
 import 'Features/Main/presentation/manager/cubit.dart';
 import 'Features/Main/presentation/manager/states.dart';
-import 'Features/Main/presentation/pages/screen_of_start.dart';
+import 'Features/Main/presentation/pages/notes_screen.dart';
 
 // Pending Adding in Themes [bottomBar , AppBar ,scaColor,..........  ]
 // Pending Colors..

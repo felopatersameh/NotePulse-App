@@ -14,7 +14,7 @@ class FavoriteScreen extends StatelessWidget {
       appBar: AppBar(),
 
       body: SafeArea(
-        child: AllNotesView(
+        child: ListViewNotes(
             item: AppCubit.get(context).dataFavorites.length,
             child: (context, index) => AnimatedListItem(
               index: index,
