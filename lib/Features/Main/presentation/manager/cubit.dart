@@ -5,15 +5,21 @@ import 'package:note_pulse/Core/Network/Local/local_string.dart';
 
 import '../../../../Core/Resources/icon.dart';
 import '../../data/models/notes_model.dart';
+import '../../domain/use_cases/main_use_case.dart';
 import 'states.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit() : super(InitialStates());
+  AppCubit(this.getNotesUseCase, this.insertNoteUseCase, this.removeNoteUseCase,
+      this.updateNoteUseCase)
+      : super(InitialStates());
 
   static AppCubit get(context) => BlocProvider.of(context);
 
-  // final DatabaseHelper dbHelper = DatabaseHelper();
-  // Database? database; // for Create Database
+  final GetNotesUseCase getNotesUseCase;
+  final InsertNoteUseCase insertNoteUseCase;
+  final RemoveNoteUseCase removeNoteUseCase;
+  final UpdateNoteUseCase updateNoteUseCase;
+
   List<NotesModel> dataNotes = [];
   List<NotesModel> dataFavorites = [];
   List<NotesModel> dataDone = [];
@@ -37,34 +43,71 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeThemes());
   }
 
+//---------------------------------------------SQL Process
+  Future<void> fetchNotes() async {
+    emit(LoadingGetData());
+    final result = await getNotesUseCase.execute();
+    result.fold(
+      (failure) => emit(ErrorGetData(text: failure)),
+      (notes) => emit(SuccessesGetDatabase(notes)),
+    );
+  }
+
+  Future<void> addNote(NotesModel note) async {
+    emit(NotesLoading());
+    final result = await insertNoteUseCase.execute(note);
+    result.fold(
+      (failure) => emit(NotesError(failure)),
+      (_) => fetchNotes(),
+    );
+  }
+
+  Future<void> deleteNote(String id) async {
+    emit(NotesLoading());
+    final result = await removeNoteUseCase.execute(id);
+    result.fold(
+      (failure) => emit(NotesError(failure)),
+      (_) => fetchNotes(), // Refresh the list after deletion
+    );
+  }
+
+  Future<void> updateNote(NotesModel note) async {
+    emit(NotesLoading());
+    final result = await updateNoteUseCase.execute(note);
+    result.fold(
+      (failure) => emit(NotesError(failure)),
+      (_) => fetchNotes(), // Refresh the list after update
+    );
+  }
+
 //------------------------------------------------------------------------------------------------------------------------
 
-  Future<void> sqliteGetOrCreated() async {
-    // emit(LoadingGetData());
-    // dbHelper.queryAllItems().then((onValue) {
-    //   dataNotes = [];
-    //   dataFavorites = [];
-    //   dataDone = [];
-    //   for (final note in onValue) {
-    //     dataNotes.add(NotesModel.fromjson(note));
-    //     favorites.addAll({
-    //       note[AppDatabase.rawId]:
-    //           note[AppDatabase.rawFavorite] == 'yes' ? true : false
-    //     });
-    //     if (note[AppDatabase.rawFavorite] == 'yes') {
-    //       dataFavorites.add(NotesModel.fromjson(note));
-    //     }
-    //     if (isDateTimePassed(
-    //         note[AppDatabase.rawDate], note[AppDatabase.rawTime])) {
-    //       dataDone.add(NotesModel.fromjson(note));
-    //     }
-    //   }
-    //
-    //   emit(SuccessesGetDatabase());
-    // }).catchError((onError) {
-    //   emit(ErrorOnGetData(text: onError));
-    // });
-  }
+  // Future<void> sqliteGetOrCreated() async {
+  //   emit(LoadingGetData());
+  //   dbHelper.().then((onValue) {
+  //     dataNotes = [];
+  //     dataFavorites = [];
+  //     dataDone = [];
+  //     for (final note in onValue) {
+  //       dataNotes.add(NotesModel.fromjson(note));
+  //       favorites.addAll({
+  //         note[AppDatabase.rawId]:
+  //             note[AppDatabase.rawFavorite] == 'yes' ? true : false
+  //       });
+  //       if (note[AppDatabase.rawFavorite] == 'yes') {
+  //         dataFavorites.add(NotesModel.fromjson(note));
+  //       }
+  //       if (isDateTimePassed(
+  //           note[AppDatabase.rawDate], note[AppDatabase.rawTime])) {
+  //         dataDone.add(NotesModel.fromjson(note));
+  //       }
+  //     }
+  //
+  //     emit(SuccessesGetDatabase());
+  //   }).catchError((onError) {
+  //     emit(ErrorOnGetData(text: onError));
+  //   });
+  // }
 
 //------------------------------------------------------------------------------------------------------------------------
 

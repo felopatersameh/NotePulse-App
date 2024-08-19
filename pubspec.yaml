@@ -46,6 +46,8 @@ dependencies:
   webview_flutter: ^4.8.0
   fluttertoast: ^8.2.8
   slideable: ^0.0.2
+  dartz: ^0.10.1
+  get_it: ^7.7.0
 
 dev_dependencies:
   flutter_test:

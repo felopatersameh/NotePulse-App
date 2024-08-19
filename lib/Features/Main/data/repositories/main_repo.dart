@@ -1,0 +1,1 @@
+import 'package:dartz/dartz.dart';import '../models/notes_model.dart';abstract class MainRepo {  Future<Either<String, List<NotesModel>>> getData();  Future<Either<String, NotesModel>> insertData(NotesModel note);  Future<Either<String, bool>> removeData(String id);  Future<Either<String, bool>> updateData(NotesModel note);}

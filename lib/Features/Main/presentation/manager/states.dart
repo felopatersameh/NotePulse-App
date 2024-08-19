@@ -10,15 +10,18 @@ class Themes extends AppState {}
 
 class ShowSheet extends AppState {}
 
-//-----------------------------------------
 class LoadingGetData extends AppState {}
 
-class SuccessesGetDatabase extends AppState {}
+class SuccessesGetDatabase extends AppState {
+  final List<NotesModel> notes;
 
-class ErrorOnGetData extends AppState {
+  SuccessesGetDatabase(this.notes);
+}
+
+class ErrorGetData extends AppState {
   final String text;
 
-  ErrorOnGetData({required this.text});
+  ErrorGetData({required this.text});
 }
 //-----------------------------------------
 
@@ -59,10 +62,6 @@ class DeletDatabase extends AppState {}
 class ChangeBottomSheet extends AppState {}
 
 class ChangeThemes extends AppState {}
-
-class update1 extends AppState {}
-
-class update2 extends AppState {}
 
 class NotesInitial extends AppState {}
 
