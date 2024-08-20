@@ -105,7 +105,7 @@ class MainCubit extends Cubit<MainState> {
     final result = await updateNoteUseCase.execute(note);
     result.fold(
       (failure) => emit(NotesError(failure)),
-      (_) => fetchNotes(), // Refresh the list after update
+      (_) => fetchNotes(),
     );
   }
 
