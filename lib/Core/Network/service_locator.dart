@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:note_pulse/Features/Main/presentation/manager/cubit.dart';
+import 'package:note_pulse/Features/Main/presentation/manager/main_cubit.dart';
 
 import '../../Features/Main/data/repositories/main_repo.dart';
 import '../../Features/Main/domain/repositories/main_repo_impl.dart';
@@ -26,7 +26,7 @@ void setupLocator() {
       () => UpdateNoteUseCase(getIt<MainRepo>()));
 
   // Register Cubit
-  getIt.registerFactory<AppCubit>(() => AppCubit(
+  getIt.registerFactory<MainCubit>(() => MainCubit(
         getIt<GetNotesUseCase>(),
         getIt<InsertNoteUseCase>(),
         getIt<RemoveNoteUseCase>(),

@@ -6,9 +6,9 @@ import 'Core/Network/Local/cash_helper.dart';
 import 'Core/Network/service_locator.dart';
 import 'Core/Resources/themes_app.dart';
 import 'Core/bloc_observer.dart';
-import 'Features/Main/presentation/manager/cubit.dart';
-import 'Features/Main/presentation/manager/states.dart';
-import 'Features/Main/presentation/pages/notes_screen.dart';
+import 'Features/Main/presentation/manager/main_cubit.dart';
+import 'Features/Main/presentation/manager/main_states.dart';
+import 'Features/Main/presentation/pages/main_screen.dart';
 
 // Pending Adding in Themes [bottomBar , AppBar ,scaColor,..........  ]
 // Pending Colors..
@@ -43,18 +43,18 @@ class Myapp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => getIt<AppCubit>()
+              create: (context) => getIt<MainCubit>()
                 ..changeThemes(model)
                 ..fetchNotes())
         ],
-        child: BlocBuilder<AppCubit, AppState>(
+        child: BlocBuilder<MainCubit, MainState>(
           builder: (context, state) {
             return MaterialApp(
               themeMode:
-                  AppCubit.get(context).dark ? ThemeMode.dark : ThemeMode.light,
+                  MainCubit.get(context).dark ? ThemeMode.dark : ThemeMode.light,
               darkTheme: themeDark(context),
               debugShowCheckedModeBanner: false,
-              home: const HomeLayout(),
+              home: const MainView(),
               theme: themeLight(context),
             );
           },
