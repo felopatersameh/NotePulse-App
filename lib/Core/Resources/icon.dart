@@ -36,8 +36,12 @@ class AppIcons {
 
   static const IconData iconAddNote = Icons.post_add;
 //-----------------------------------------------------------------------------------Form Slideable
-  static const IconData iconRemove = Icons.delete;
-  static const IconData iconAddFavorite = Icons.favorite;
+  static const Icon iconRemove = Icon(
+      Icons.delete
+  );
+  static const Icon iconAddFavorite =Icon(
+      Icons.favorite
+  );
 
 
 }

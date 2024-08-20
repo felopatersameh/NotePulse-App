@@ -95,7 +95,7 @@ class MainCubit extends Cubit<MainState> {
     final result = await removeNoteUseCase.execute(id);
     result.fold(
       (failure) => emit(NotesError(failure)),
-      (_) => fetchNotes(), // Refresh the list after deletion
+      (_) => fetchNotes(),
     );
   }
 
