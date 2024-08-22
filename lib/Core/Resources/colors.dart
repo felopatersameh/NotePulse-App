@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Color ch (context)
-// {
-//   if(AppCubit.get(context).dark)
-//     {
-//       return Colors.black ;
-//     }
-//   else {
-//     return Colors.white ;
-//   }
-// }
-
 class AppColors {
   // basic color && color app
   static const Color colorBackground = Color(0xffF6F6F6);

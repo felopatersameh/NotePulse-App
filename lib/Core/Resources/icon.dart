@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppIcons {
-  static const Icon iconFavorite = iconFavoritePage;
-
   static const Icon iconStar = Icon(
     Icons.star,
     color: Colors.amber,
@@ -12,9 +10,7 @@ class AppIcons {
     Icons.update_sharp,
     color: Colors.green,
   );
-
-//-----------------------------------------------------------------------------------NavigateBar
-  static const Icon iconFavoritePage = iconStar;
+  static const Icon iconRemove = Icon(Icons.delete, color: Colors.red);
 
   static const Icon iconDonePage = Icon(Icons.check, color: Colors.green);
 
@@ -23,12 +19,8 @@ class AppIcons {
     Icons.settings,
     color: Colors.grey,
   );
-  static const Icon iconAboutPage = Icon(
-    Icons.info,
-    color: Colors.grey,
-  );
 
-//-----------------------------------------------------------------------------------Form AddNotes
+///////////////////////////////////////////////////////////////
   static const IconData iconClock = Icons.timer_rounded;
 
   static const IconData iconDate = Icons.date_range;
@@ -37,9 +29,6 @@ class AppIcons {
 
   static const IconData iconDescription = Icons.description;
 
-  static const IconData iconAddNote = Icons.post_add;
-
-//-----------------------------------------------------------------------------------Form Slideable
-  static const Icon iconRemove = Icon(Icons.delete, color: Colors.red);
-  static const Icon iconAddFavorite = Icon(Icons.favorite);
+  static const IconData iconFloatPart1 = Icons.add;
+  static const IconData iconFloatPart2 = Icons.data_saver_on_sharp;
 }

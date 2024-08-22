@@ -21,8 +21,8 @@ class WeightFontManger {
 }
 
 class FamilyFontManger {
-  static const String familyAll = 'Inter';
-  static const String familyApp = 'PilotExtended';
+  static const String familyAll = 'RobotoMono';
+  static const String familyApp = 'ChakraPatch';
 }
 
 TextStyle _getTextStyle(
@@ -45,7 +45,7 @@ TextStyle getTextLarge(color) => _getTextStyle(
     SizeFontManger.s20, WeightFontManger.wB, color, FamilyFontManger.familyAll);
 //---------------------------------
 TextStyle getTextLabelLarge(color) => _getTextStyle(SizeFontManger.s20,
-    WeightFontManger.w400, color, FamilyFontManger.familyAll);
+    WeightFontManger.w400, color, FamilyFontManger.familyApp);
 //-------------------------------
 TextStyle getTextAppBar(color) => _getTextStyle(
     SizeFontManger.s24, WeightFontManger.wB, color, FamilyFontManger.familyAll);

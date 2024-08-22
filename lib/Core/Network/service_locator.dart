@@ -4,7 +4,7 @@ import 'package:note_pulse/Features/Main/presentation/manager/main_cubit.dart';
 import '../../Features/Main/data/repositories/main_repo.dart';
 import '../../Features/Main/domain/repositories/main_repo_impl.dart';
 import '../../Features/Main/domain/use_cases/main_use_case.dart';
-import '../SqlLite/database_process.dart';
+import 'SqLite/database_process.dart';
 
 final GetIt getIt = GetIt.instance;
 

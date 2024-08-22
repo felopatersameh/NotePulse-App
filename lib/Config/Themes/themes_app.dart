@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_pulse/Core/Resources/styles.dart';
 
-import 'colors.dart';
+import '../../Core/Resources/colors.dart';
 
 ThemeData themeLight(context) => ThemeData(
     scaffoldBackgroundColor: AppColors.colorBackground,

@@ -41,7 +41,7 @@ class MainCubit extends Cubit<MainState> {
 
   //////////////////////////////////////////////////////////
   bool sheet = true;
-  IconData iconFloating = AppIcons.iconAddNote;
+  IconData iconFloating = AppIcons.iconFloatPart1;
 
   void changeBottomSheet({required bool show, required IconData iconData}) {
     sheet = show;

@@ -4,7 +4,7 @@ import 'package:note_pulse/Core/Network/Local/local_string.dart';
 
 import 'Core/Network/Local/cash_helper.dart';
 import 'Core/Network/service_locator.dart';
-import 'Core/Resources/themes_app.dart';
+import 'Config/Themes/themes_app.dart';
 import 'Core/bloc_observer.dart';
 import 'Features/Main/presentation/manager/main_cubit.dart';
 import 'Features/Main/presentation/manager/main_states.dart';
