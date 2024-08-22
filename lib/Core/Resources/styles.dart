@@ -35,7 +35,7 @@ TextStyle _getTextStyle(
       overflow: TextOverflow.ellipsis);
 }
 
-TextStyle getTextMedium(color) => _getTextStyle(SizeFontManger.s18,
+TextStyle getTextMedium(color) => _getTextStyle(SizeFontManger.s16,
     WeightFontManger.w400, color, FamilyFontManger.familyAll);
 //---------------------------------
 TextStyle getTextSmall(color) => _getTextStyle(
