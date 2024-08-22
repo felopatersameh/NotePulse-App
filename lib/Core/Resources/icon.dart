@@ -8,6 +8,10 @@ class AppIcons {
     color: Colors.amber,
     size: 20,
   );
+  static const Icon iconUpdate = Icon(
+    Icons.update_sharp,
+    color: Colors.green,
+  );
 
 //-----------------------------------------------------------------------------------NavigateBar
   static const Icon iconFavoritePage = iconStar;
