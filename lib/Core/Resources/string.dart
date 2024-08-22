@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String nameApp ="Notes Pulse";
   //*************************************************** validate
   static const String time = 'Time';
   static const String date = 'Time';

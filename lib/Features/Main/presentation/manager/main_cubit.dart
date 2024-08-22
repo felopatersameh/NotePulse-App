@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../Core/Network/Local/cash_helper.dart';
 import '../../../../Core/Network/Local/local_string.dart';
@@ -70,10 +71,11 @@ class MainCubit extends Cubit<MainState> {
           if (note.favorite == "yes") {
             favourite.add(note);
           }
-          if (isDateTimePassed(note.date, note.time) || note.done == "yes") {
+          if (isDateTimePassed(note.date, note.time)) {
             passed.add(note);
           }
         }
+
         emit(SuccessesGetDatabase(notes, favourite, passed));
       },
     );
@@ -82,11 +84,15 @@ class MainCubit extends Cubit<MainState> {
 //////////////////////////////////////////////////////////
   Future<void> addNote(NotesModel note) async {
     emit(NotesLoading());
-    final result = await insertNoteUseCase.execute(note);
-    result.fold(
-      (failure) => emit(NotesError(failure)),
-      (_) => fetchNotes(),
-    );
+    if (isDateTimePassed(note.date, note.time)) {
+      emit(NotesError('The time is Already Passed '));
+    } else {
+      final result = await insertNoteUseCase.execute(note);
+      result.fold(
+        (failure) => emit(NotesError(failure)),
+        (_) => fetchNotes(),
+      );
+    }
   }
 
 //////////////////////////////////////////////////////////
@@ -112,34 +118,15 @@ class MainCubit extends Cubit<MainState> {
   //////////////////////////////////////////////////////////
 
   bool isDateTimePassed(String databaseDateString, String dataBasTimeString) {
-    // DateTime databaseDate = DateTime.parse(databaseDateString);
-    // final bool check;
-    //
-    // dataBasTimeString.contains('PM') ? check = true : check = false;
-    //
-    // String time = check
-    //     ? dataBasTimeString.replaceAll("PM", '')
-    //     : dataBasTimeString.replaceAll("AM", '');
-    //
-    // int hours = check
-    //     ? int.parse(time.split(':')[0]) + 12
-    //     : int.parse(time.split(':')[0]);
-    // int minutes = int.parse(time.split(':')[1]);
-    //
-    // DateTime databaseDateTime = DateTime(
-    //   databaseDate.year,
-    //   databaseDate.month,
-    //   databaseDate.day,
-    //   hours,
-    //   minutes,
-    // );
-    //
-    // DateTime now = DateTime.now();
-    //
-    // if (databaseDateTime.isBefore(now)) {
-    //   return true; // The date and time have passed
-    // } else {
-    return false; // The date and time have not passed
-    // }
+    DateFormat dateFormat = DateFormat('yyyy-MM-dd');
+    DateFormat timeFormat = DateFormat('hh:mm a');
+    DateTime dateTime = dateFormat.parse(databaseDateString);
+    DateTime time = timeFormat.parse(dataBasTimeString);
+    bool hasPassedDate = dateTime.isBefore(DateTime.now());
+    bool hasPassedTime = time.isBefore(DateTime.now());
+    if (hasPassedDate && hasPassedTime) {
+      return true;
+    }
+    return false;
   }
 }
