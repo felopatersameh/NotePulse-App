@@ -1,16 +1,22 @@
-# note_pulse
+# Note Pulse
 
-A new Flutter project.
+**Note Pulse** is a simple and easy-to-use note-taking application built with Flutter. It allows users to create, edit, and delete notes, add notes to favorites, and track how much time has passed since a note was created or modified. The app also supports both dark and light themes.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Create Notes:** Easily create new notes to keep track of your thoughts and ideas.
+- **Edit Notes:** Modify existing notes to update or correct information.
+- **Delete Notes:** Remove notes that are no longer needed.
+- **Favorite Notes:** Mark important notes as favorites for quick access.
+- **Time Tracking:** Check how much time has passed since the note was created or last modified.
+- **Themes:** Switch between dark and light themes for a customized user experience.
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **sqflite:** Database management for storing notes.
+- **intl:** Handling internationalization and formatting dates/times.
+- **flutter_bloc:** State management using the BLoC pattern.
+- **shared_preferences:** Persistent storage for user preferences.
+- **slideable:** Implementing sliding actions on notes.
+- **dartz:** Functional programming utilities.
+- **get_it:** Dependency injection for managing app-wide services.
