@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppIcons {
-
   static const Icon iconFavorite = iconFavoritePage;
 
   static const Icon iconStar = Icon(
     Icons.star,
-    color: Colors.yellowAccent,
+    color: Colors.amber,
     size: 20,
   );
 
 //-----------------------------------------------------------------------------------NavigateBar
-  static const Icon iconFavoritePage = Icon(Icons.favorite, color: Colors.red);
+  static const Icon iconFavoritePage = iconStar;
 
   static const Icon iconDonePage = Icon(Icons.check, color: Colors.green);
 
@@ -35,13 +34,8 @@ class AppIcons {
   static const IconData iconDescription = Icons.description;
 
   static const IconData iconAddNote = Icons.post_add;
+
 //-----------------------------------------------------------------------------------Form Slideable
-  static const Icon iconRemove = Icon(
-      Icons.delete
-  );
-  static const Icon iconAddFavorite =Icon(
-      Icons.favorite
-  );
-
-
+  static const Icon iconRemove = Icon(Icons.delete, color: Colors.red);
+  static const Icon iconAddFavorite = Icon(Icons.favorite);
 }

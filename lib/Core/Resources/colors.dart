@@ -40,7 +40,7 @@ class AppColorsDark {
   // color for text
   static const Color colorTitleTextWhite = Colors.white;
   static const Color colorTitleText2 = Color.fromRGBO(236, 232, 232, 1.0);
-  static const Color colorTitleText3 = Colors.black38;
+  static const Color colorTitleText3 = Colors.white70;
 
   // for icons
   static const Color colorIcons = Colors.white;
