@@ -2,6 +2,10 @@
 
 **Note Pulse** is a simple and easy-to-use note-taking application built with Flutter. It allows users to create, edit, and delete notes, add notes to favorites, and track how much time has passed since a note was created or modified. The app also supports both dark and light themes.
 
+<p align="center"> 
+![8](https://github.com/user-attachments/assets/02ed6490-99fb-4911-b442-aa4e616a8782)
+
+</p>
 ## Features
 
 - **Create Notes:** Easily create new notes to keep track of your thoughts and ideas.
